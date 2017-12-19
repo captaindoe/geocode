@@ -43,4 +43,15 @@ class Response
 
         	return false;
     	}
+	
+	public function city()
+    	{
+		foreach ($this->response->address_components as $component) {
+		    if (isset($component->types) && in_array('locality', $component->types)) {
+			return $component->long_name;
+		    }
+		}
+
+        	return false;
+    	}
 }
